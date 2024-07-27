@@ -1,22 +1,24 @@
 import Loader from "../components/Loader";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
-import Island from "../models/Island";
 import Sky from "../models/Sky";
 import Bird from "../models/Bird";
 import Plane from "../models/Plane";
+import Volcano from "../models/Volcano";
 
 const Home = () => {
+  // State for the rotation of the island
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
 
+  // Function to adjust the size of the island and plane based on the screen size
   const adjustIslandForScreenSize = () => {
     let screenScale;
-    let screenPosition = [0, -6.5, -43];
-    let rotation = [0.1, 4.7, 0];
+    let screenPosition = [-2, -19, -115];
+    let rotation = [-1.4, 0, 1];
 
     if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
+      screenScale = [1, 1, 1];
     } else {
       screenScale = [1, 1, 1];
     }
@@ -28,16 +30,17 @@ const Home = () => {
     let screenScale, screenPosition;
 
     if (window.innerWidth < 768) {
-      screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, 0, 0.2];
+      screenScale = [6, 6, 6];
+      screenPosition = [0, -1, 1];
     } else {
-      screenScale = [4, 4, 4];
-      screenPosition = [0, 0, 0.2];
+      screenScale = [6, 6, 6];
+      screenPosition = [0, -1, 1];
     }
 
     return [screenScale, screenPosition];
   };
 
+  // Get the adjusted values for the island and plane
   const [islandScale, islandPosition, islandRotation] =
     adjustIslandForScreenSize();
 
@@ -46,11 +49,16 @@ const Home = () => {
   return (
     <>
       <section className="w-full h-screen relative">
+        {/* 3D Canvas */}
         <Canvas
-          className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
+          className={`w-full h-screen bg-transparent ${
+            isRotating ? "cursor-grabbing" : "cursor-grab"
+          }`}
           camera={{ near: 0.1, far: 1000 }}
         >
           <Suspense fallback={<Loader />}>
+
+            {/* Lights */}
             <directionalLight position={[10, 1, 1]} intensity={2} />
             <ambientLight intensity={0.5} />
             <hemisphereLight
@@ -59,13 +67,12 @@ const Home = () => {
               intensity={1}
             />
 
-            <Sky 
-              isRotating={isRotating}  
-            />
+            {/* Models */}
+            <Sky isRotating={isRotating} />
             <Bird />
-            <Island
+            <Volcano
               position={islandPosition}
-              islandScale={islandScale}
+              scale={islandScale}
               rotation={islandRotation}
               isRotating={isRotating}
               setIsRotating={setIsRotating}
@@ -78,6 +85,7 @@ const Home = () => {
               setIsRotating={setIsRotating}
               rotation={[0, 20, 0]}
             />
+            
           </Suspense>
         </Canvas>
       </section>

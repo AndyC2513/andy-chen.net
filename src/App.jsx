@@ -8,8 +8,6 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          {/* <Route path='/contact' element={<Contact />} />
-          <Route path='/resume' element={<Resume />} /> */}
         </Routes>
       </Router>
     </main>
