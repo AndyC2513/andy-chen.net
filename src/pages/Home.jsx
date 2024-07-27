@@ -1,10 +1,6 @@
-import Loader from "../components/Loader";
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
-import Sky from "../models/Sky";
-import Bird from "../models/Bird";
-import Plane from "../models/Plane";
-import Volcano from "../models/Volcano";
+import { useState } from "react";
+import Second from "../components/Second";
+import Main from "../components/Main";
 
 const Home = () => {
   // State for the rotation of the island
@@ -14,13 +10,13 @@ const Home = () => {
   // Function to adjust the size of the island and plane based on the screen size
   const adjustIslandForScreenSize = () => {
     let screenScale;
-    let screenPosition = [-2, -19, -115];
+    let screenPosition = [-2, -20, -115];
     let rotation = [-1.4, 0, 1];
 
     if (window.innerWidth < 768) {
-      screenScale = [1, 1, 1];
+      screenScale = [0.7, 0.7, 0.7];
     } else {
-      screenScale = [1, 1, 1];
+      screenScale = [0.9, 0.9, 0.9];
     }
 
     return [screenScale, screenPosition, rotation];
@@ -30,11 +26,11 @@ const Home = () => {
     let screenScale, screenPosition;
 
     if (window.innerWidth < 768) {
-      screenScale = [6, 6, 6];
-      screenPosition = [0, -1, 1];
+      screenScale = [0.5, 0.5, 0.5];
+      screenPosition = [0, -10, -30];
     } else {
-      screenScale = [6, 6, 6];
-      screenPosition = [0, -1, 1];
+      screenScale = [0.5, 0.5, 0.5];
+      screenPosition = [0, -8, -18];
     }
 
     return [screenScale, screenPosition];
@@ -48,47 +44,21 @@ const Home = () => {
 
   return (
     <>
-      <section className="w-full h-screen relative">
-        {/* 3D Canvas */}
-        <Canvas
-          className={`w-full h-screen bg-transparent ${
-            isRotating ? "cursor-grabbing" : "cursor-grab"
-          }`}
-          camera={{ near: 0.1, far: 1000 }}
-        >
-          <Suspense fallback={<Loader />}>
-
-            {/* Lights */}
-            <directionalLight position={[10, 1, 1]} intensity={2} />
-            <ambientLight intensity={0.5} />
-            <hemisphereLight
-              skyColor="#b1e1ff"
-              groundColor={"#000000"}
-              intensity={1}
-            />
-
-            {/* Models */}
-            <Sky isRotating={isRotating} />
-            <Bird />
-            <Volcano
-              position={islandPosition}
-              scale={islandScale}
-              rotation={islandRotation}
-              isRotating={isRotating}
-              setIsRotating={setIsRotating}
-              setCurrentStage={setCurrentStage}
-            />
-            <Plane
-              position={planePosition}
-              planeScale={planeScale}
-              isRotating={isRotating}
-              setIsRotating={setIsRotating}
-              rotation={[0, 20, 0]}
-            />
-            
-          </Suspense>
-        </Canvas>
-      </section>
+      <Main
+        isRotating={isRotating}
+        islandPosition={islandPosition}
+        islandScale={islandScale}
+        islandRotation={islandRotation}
+        setIsRotating={setIsRotating}
+        setCurrentStage={setCurrentStage}
+        planePosition={planePosition}
+        planeScale={planeScale}
+      />
+      <Second
+        islandScale={islandScale}
+        setIsRotating={setIsRotating}
+        setCurrentStage={setCurrentStage}
+      />
     </>
   );
 };

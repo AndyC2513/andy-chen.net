@@ -4,6 +4,7 @@ import Home from './pages/Home'
 
 function App() {
   return (
+    // Main content
     <main className='bg-slate-300/20'>
       <Router>
         <Routes>

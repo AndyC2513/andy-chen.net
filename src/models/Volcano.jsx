@@ -105,9 +105,13 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     }
   }
 
+  // Update the rotation of the island
   useFrame(() => {
+
+    // If not rotating, apply damping to the rotation speed
     if (!isRotating) {
       rotationSpeed.current *= dampingFactor;
+      // If the rotation speed is very small, set it to zero
       if (Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
       }
