@@ -80,34 +80,33 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     e.stopPropagation();
     e.preventDefault();
     setIsRotating(true);
-  
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     lastX.current = clientX;
-  }
+  };
 
   const handleTouchEnd = (e) => {
     e.stopPropagation();
     e.preventDefault();
     setIsRotating(false);
-  }
+  };
 
   const handleTouchMove = (e) => {
     e.stopPropagation();
     e.preventDefault();
-  
+
     if (isRotating) {
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const delta = (clientX - lastX.current) / viewport.width;
-  
+
       islandRef.current.rotation.z += delta * 0.01 * Math.PI;
       lastX.current = clientX;
       rotationSpeed.current = delta * 0.01 * Math.PI;
     }
-  }
+  };
 
   // Update the rotation of the island
   useFrame(() => {
-
     // If not rotating, apply damping to the rotation speed
     if (!isRotating) {
       rotationSpeed.current *= dampingFactor;
@@ -184,7 +183,7 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
   return (
-    <a.group ref={islandRef}  {...props}>
+    <a.group ref={islandRef} {...props}>
       <mesh
         geometry={nodes.Clouds_Clouds_0.geometry}
         material={materials.Clouds}
@@ -246,9 +245,9 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
         material={materials.Volcano_Base}
       />
     </a.group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/volcano_island_lowpoly.glb')
+useGLTF.preload("/volcano_island_lowpoly.glb");
 
 export default Volcano;

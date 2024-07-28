@@ -1,10 +1,9 @@
-import Loader from "../components/Loader";
+import Loader from "../Loader";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
-import Sky from "../models/Sky";
-import Bird from "../models/Bird";
-import Volcano from "../models/Volcano";
-import Airship from "../models/Airship";
+import Sky from "../../models/Sky";
+import Volcano from "../../models/Volcano";
+import Airship from "../../models/Airship";
 
 const Main = ({
   isRotating,
@@ -37,7 +36,6 @@ const Main = ({
 
           {/* Models */}
           <Sky isRotating={isRotating} />
-          <Bird />
           <Volcano
             position={islandPosition}
             scale={islandScale}

@@ -22,6 +22,6 @@ const Airship = ({ isRotating, planeScale, ...props }) => {
       <primitive object={scene} />
     </mesh>
   );
-}
+};
 
-export default Airship
+export default Airship;

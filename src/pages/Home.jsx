@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Second from "../components/Second";
-import Main from "../components/Main";
+import Second from "../components/Home/Second";
+import Main from "../components/Home/Main";
 
 const Home = () => {
   // State for the rotation of the island
@@ -44,21 +44,25 @@ const Home = () => {
 
   return (
     <>
-      <Main
-        isRotating={isRotating}
-        islandPosition={islandPosition}
-        islandScale={islandScale}
-        islandRotation={islandRotation}
-        setIsRotating={setIsRotating}
-        setCurrentStage={setCurrentStage}
-        planePosition={planePosition}
-        planeScale={planeScale}
-      />
-      <Second
-        islandScale={islandScale}
-        setIsRotating={setIsRotating}
-        setCurrentStage={setCurrentStage}
-      />
+      <div>
+        <Main
+          isRotating={isRotating}
+          islandPosition={islandPosition}
+          islandScale={islandScale}
+          islandRotation={islandRotation}
+          setIsRotating={setIsRotating}
+          setCurrentStage={setCurrentStage}
+          planePosition={planePosition}
+          planeScale={planeScale}
+        />
+      </div>
+      <div>
+        <Second
+          islandScale={islandScale}
+          setIsRotating={setIsRotating}
+          setCurrentStage={setCurrentStage}
+        />
+      </div>
     </>
   );
 };

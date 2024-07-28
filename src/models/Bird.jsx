@@ -3,9 +3,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
-
 const Bird = () => {
-
   const birdRef = useRef();
   const { scene, animations } = useGLTF(birdScene);
   const { actions } = useAnimations(animations, birdRef);
