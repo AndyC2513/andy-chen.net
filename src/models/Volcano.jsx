@@ -13,8 +13,17 @@ import { a } from "@react-spring/three";
 
 import volcanoScene from "../assets/3d/volcano.glb";
 
-const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
+const Volcano = ({
+  position,
+  scale,
+  rotation,
+  isRotating,
+  setIsRotating,
+  setCurrentStage,
+  userViewing,
+}) => {
   const islandRef = useRef();
+  const defaultRotation = [-1.4, 0, 1];
 
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(volcanoScene);
@@ -161,14 +170,28 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
 
   useEffect(() => {
     const canvas = gl.domElement;
-    canvas.addEventListener("pointerdown", handlePointerDown);
-    canvas.addEventListener("pointerup", handlePointerUp);
-    canvas.addEventListener("pointermove", handlePointerMove);
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
-    canvas.addEventListener("touchstart", handleTouchStart);
-    canvas.addEventListener("touchend", handleTouchEnd);
-    canvas.addEventListener("touchmove", handleTouchMove);
+    
+    const resetRotation = () => {
+      if (islandRef.current) {
+        islandRef.current.rotation.set(...defaultRotation);
+      }
+    };
+
+    if (userViewing) {
+      resetRotation();
+      setIsRotating(false);
+    }
+
+    if (!userViewing) {
+      canvas.addEventListener("pointerdown", handlePointerDown);
+      canvas.addEventListener("pointerup", handlePointerUp);
+      canvas.addEventListener("pointermove", handlePointerMove);
+      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("keyup", handleKeyUp);
+      canvas.addEventListener("touchstart", handleTouchStart);
+      canvas.addEventListener("touchend", handleTouchEnd);
+      canvas.addEventListener("touchmove", handleTouchMove);
+    }
 
     return () => {
       canvas.removeEventListener("pointerdown", handlePointerDown);
@@ -180,10 +203,15 @@ const Volcano = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
       canvas.removeEventListener("touchend", handleTouchEnd);
       canvas.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, userViewing]);
 
   return (
-    <a.group ref={islandRef} {...props}>
+    <a.group
+      ref={islandRef}
+      position={position}
+      scale={scale}
+      rotation={rotation}
+    >
       <mesh
         geometry={nodes.Clouds_Clouds_0.geometry}
         material={materials.Clouds}

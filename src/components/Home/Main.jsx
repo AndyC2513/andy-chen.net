@@ -1,9 +1,8 @@
-import Loader from "../Loader";
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { useRef, useEffect } from "react";
 import Sky from "../../models/Sky";
 import Volcano from "../../models/Volcano";
 import Airship from "../../models/Airship";
+import { a, useSpring } from "@react-spring/three";
 
 const Main = ({
   isRotating,
@@ -14,46 +13,57 @@ const Main = ({
   setCurrentStage,
   planePosition,
   planeScale,
+  cameraPosition,
+  cameraRotation,
+  userViewing,
+  setMoving,
 }) => {
-  return (
-    <section className="w-full h-screen relative">
-      {/* 3D Canvas */}
-      <Canvas
-        className={`w-full h-screen bg-transparent ${
-          isRotating ? "cursor-grabbing" : "cursor-grab"
-        }`}
-        camera={{ near: 0.1, far: 1000 }}
-      >
-        <Suspense fallback={<Loader />}>
-          {/* Lights */}
-          <directionalLight position={[10, 1, 1]} intensity={2} />
-          <ambientLight intensity={0.5} />
-          <hemisphereLight
-            skyColor="#b1e1ff"
-            groundColor={"#000000"}
-            intensity={1}
-          />
+  // Camera
+  const cameraRef = useRef();
 
-          {/* Models */}
-          <Sky isRotating={isRotating} />
-          <Volcano
-            position={islandPosition}
-            scale={islandScale}
-            rotation={islandRotation}
-            isRotating={isRotating}
-            setIsRotating={setIsRotating}
-            setCurrentStage={setCurrentStage}
-          />
-          <Airship
-            position={planePosition}
-            planeScale={planeScale}
-            isRotating={isRotating}
-            setIsRotating={setIsRotating}
-            rotation={[0, 0, 0]}
-          />
-        </Suspense>
-      </Canvas>
-    </section>
+  // Camera animation
+  const { position, rotation } = useSpring({
+    position: cameraPosition,
+    rotation: cameraRotation,
+    config: { mass: 1, tension: 20, friction: 9 },
+    onRest: () => setMoving(false),
+  });
+
+  useEffect(() => {
+    setMoving(true);
+  }, [cameraPosition, cameraRotation]);
+
+  return (
+    <a.perspectiveCamera ref={cameraRef} position={position} rotation={rotation}>
+      {/* Lights */}
+      <directionalLight position={[9, 1, 1]} intensity={1.8} />
+      <ambientLight intensity={0.3} />
+      <hemisphereLight
+        skyColor="#b1e1ff"
+        groundColor={"#000000"}
+        intensity={0.9}
+      />
+
+      {/* Models */}
+      <Sky isRotating={isRotating} />
+      <Volcano
+        position={islandPosition}
+        scale={islandScale}
+        rotation={islandRotation}
+        isRotating={isRotating}
+        setIsRotating={setIsRotating}
+        setCurrentStage={setCurrentStage}
+        userViewing={userViewing}
+      />
+      <Airship
+        position={planePosition}
+        planeScale={planeScale}
+        isRotating={isRotating}
+        setIsRotating={setIsRotating}
+        rotation={[0, 0, 0]}
+        userViewing={userViewing}
+      />
+    </a.perspectiveCamera>
   );
 };
 
