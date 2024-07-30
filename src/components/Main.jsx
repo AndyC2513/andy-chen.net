@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import Sky from "../../models/Sky";
-import Volcano from "../../models/Volcano";
-import Airship from "../../models/Airship";
+import Sky from "../models/Sky";
+import Volcano from "../models/Volcano";
+import Airship from "../models/Airship";
 import { a, useSpring } from "@react-spring/three";
 
 const Main = ({
@@ -54,6 +54,7 @@ const Main = ({
         setIsRotating={setIsRotating}
         setCurrentStage={setCurrentStage}
         userViewing={userViewing}
+        setMoving={setMoving}
       />
       <Airship
         position={planePosition}

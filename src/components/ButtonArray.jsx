@@ -14,13 +14,15 @@ const ButtonArray = ({
   setUserViewing,
   setButtonIndex,
   buttonIndex,
+  setFirstLoad,
 }) => {
   const handleClick = (stage, position, rotation) => {
     setCameraPosition(position);
     setCameraRotation(rotation);
     setButtonIndex(stage);
+    setFirstLoad(false);
 
-    if (stage !== 1 && (stage !== undefined || stage !== null)) {
+    if (stage !== 4 && (stage !== undefined || stage !== null)) {
       setUserViewing(true);
     } else {
       setUserViewing(false);

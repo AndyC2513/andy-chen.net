@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Loader from "../components/Loader";
-import Main from "../components/Home/Main";
-import ButtonArray from "../components/Home/ButtonArray";
-import TextDisplay from "../components/Home/TextDisplay";
+import Main from "../components/Main";
+import ButtonArray from "../components/ButtonArray";
+import TextDisplay from "../components/TextDisplay";
+import Popup from "../components/Popup";
 
 const Home = () => {
   // State for the rotation of the island
@@ -12,9 +13,10 @@ const Home = () => {
   const [currentStage, setCurrentStage] = useState(1);
   const [cameraPosition, setCameraPosition] = useState([0, 0, 0]);
   const [cameraRotation, setCameraRotation] = useState([0, 0, 0]);
-  const [userViewing, setUserViewing] = useState(false);
+  const [userViewing, setUserViewing] = useState(true);
   const [isMoving, setMoving] = useState(false);
-  const [buttonIndex, setButtonIndex] = useState(null);
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [buttonIndex, setButtonIndex] = useState(1);
 
   const adjustCameraPosition = () => {
     let firstPosition;
@@ -23,15 +25,15 @@ const Home = () => {
     let fourthPosition;
 
     if (window.innerWidth < 768) {
-      firstPosition = [0, 0, 0];
-      secondPosition = [2.5, -2, 20];
-      thirdPosition = [43, -9, 70];
-      fourthPosition = [65, 40, -92];
+      firstPosition = [2.5, -2, 20];
+      secondPosition = [43, -9, 70];
+      thirdPosition = [65, 40, -92];
+      fourthPosition = [0, 0, 0];
     } else {
-      firstPosition = [0, 0, 0];
-      secondPosition = [-78, 0, -49];
-      thirdPosition = [10, 25, 50];
-      fourthPosition = [80, 30, -75];
+      firstPosition = [-78, 0, -49];
+      secondPosition = [10, 25, 50];
+      thirdPosition = [80, 30, -75];
+      fourthPosition = [0, 0, 0];
     }
 
     return [firstPosition, secondPosition, thirdPosition, fourthPosition];
@@ -44,15 +46,15 @@ const Home = () => {
     let fourthRotation;
 
     if (window.innerWidth < 768) {
-      firstRotation = [0, 0, 0];
-      secondRotation = [0.1, 0.1, 0];
-      thirdRotation = [0, 0.4, 0];
-      fourthRotation = [0.3, 2, 0];
+      firstRotation = [0.1, 0.1, 0];
+      secondRotation = [0, 0.4, 0];
+      thirdRotation = [0.3, 2, 0];
+      fourthRotation = [0, 0 ,0];
     } else {
-      firstRotation = [0, 0, 0];
-      secondRotation = [0, -1.8, 0.1];
-      thirdRotation = [-0.1, 0.1, 0];
-      fourthRotation = [0.2, 1.7, 0.2];
+      firstRotation = [0, -1.8, 0.1];
+      secondRotation = [-0.1, 0.1, 0];
+      thirdRotation = [0.2, 1.7, 0.2];
+      fourthRotation = [0, 0, 0];
     }
 
     return [firstRotation, secondRotation, thirdRotation, fourthRotation];
@@ -106,6 +108,12 @@ const Home = () => {
 
   return (
     <section className="w-full h-screen relative">
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && (
+          <Popup currentStage={currentStage} userViewing={userViewing} />
+        )}
+      </div>
+
       <ButtonArray
         setCameraPosition={setCameraPosition}
         setCameraRotation={setCameraRotation}
@@ -121,9 +129,12 @@ const Home = () => {
         setIsRotating={setIsRotating}
         setButtonIndex={setButtonIndex}
         buttonIndex={buttonIndex}
+        setFirstLoad={setFirstLoad}
       />
-      <TextDisplay buttonIndex={buttonIndex} isMoving={isMoving} />
 
+      <div className="absolute top-40 left-0 right-0 z-10 flex items-center justify-center">
+        <TextDisplay buttonIndex={buttonIndex} isMoving={isMoving} firstLoad={firstLoad} />
+      </div>
 
       {/* 3D Canvas */}
       <Canvas

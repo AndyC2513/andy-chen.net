@@ -9,7 +9,7 @@ Title: Volcano Island Lowpoly
 import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { a } from "@react-spring/three";
+import { a, useSpring } from "@react-spring/three";
 
 import volcanoScene from "../assets/3d/volcano.glb";
 
@@ -150,17 +150,17 @@ const Volcano = ({
 
       // Set the current stage based on the island's orientation
       switch (true) {
-        case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
-          setCurrentStage(4);
-          break;
-        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
-          setCurrentStage(3);
-          break;
-        case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
+        case normalizedRotation >= 6 && normalizedRotation <= 6.4:
           setCurrentStage(2);
           break;
-        case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
+        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
           setCurrentStage(1);
+          break;
+        case normalizedRotation >= 2 && normalizedRotation <= 2.4:
+          setCurrentStage(4);
+          break;
+        case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
+          setCurrentStage(3);
           break;
         default:
           setCurrentStage(null);
@@ -170,7 +170,7 @@ const Volcano = ({
 
   useEffect(() => {
     const canvas = gl.domElement;
-    
+
     const resetRotation = () => {
       if (islandRef.current) {
         islandRef.current.rotation.set(...defaultRotation);
