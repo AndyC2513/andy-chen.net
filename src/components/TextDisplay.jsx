@@ -4,7 +4,7 @@ const TextDisplay = ({ buttonIndex, isMoving, firstLoad }) => {
     <>
       {/* Overlaying Text */}
       {buttonIndex === 1 && (!isMoving || firstLoad) && (
-        <div className="mt-52 flex flex-col items-center pop-box-square w-auto mx-10">
+        <div className="mt-48 flex flex-col items-center pop-box-square w-auto mx-10">
           <span className="text-black text-4xl bg-transparent p-2 rounded font-bold">
             Hey, I am Andy
           </span>
@@ -17,7 +17,7 @@ const TextDisplay = ({ buttonIndex, isMoving, firstLoad }) => {
       )}
 
       {buttonIndex === 2 && !isMoving && (
-        <div className="mt-40 flex flex-col items-center pop-box-square w-auto mx-10">
+        <div className="mt-44 flex flex-col items-center pop-box-square w-auto mx-10">
           <span className="text-black text-4xl bg-transparent p-2 rounded font-bold">
             About Me:
           </span>

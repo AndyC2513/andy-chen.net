@@ -6,6 +6,7 @@ import Main from "../components/Main";
 import ButtonArray from "../components/ButtonArray";
 import TextDisplay from "../components/TextDisplay";
 import Popup from "../components/Popup";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   // State for the rotation of the island
@@ -49,7 +50,7 @@ const Home = () => {
       firstRotation = [0.1, 0.1, 0];
       secondRotation = [0, 0.4, 0];
       thirdRotation = [0.3, 2, 0];
-      fourthRotation = [0, 0 ,0];
+      fourthRotation = [0, 0, 0];
     } else {
       firstRotation = [0, -1.8, 0.1];
       secondRotation = [-0.1, 0.1, 0];
@@ -108,6 +109,8 @@ const Home = () => {
 
   return (
     <section className="w-full h-screen relative">
+      { !userViewing && <Navbar /> }
+
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
         {currentStage && (
           <Popup currentStage={currentStage} userViewing={userViewing} />
@@ -133,7 +136,11 @@ const Home = () => {
       />
 
       <div className="absolute top-40 left-0 right-0 z-10 flex items-center justify-center">
-        <TextDisplay buttonIndex={buttonIndex} isMoving={isMoving} firstLoad={firstLoad} />
+        <TextDisplay
+          buttonIndex={buttonIndex}
+          isMoving={isMoving}
+          firstLoad={firstLoad}
+        />
       </div>
 
       {/* 3D Canvas */}
