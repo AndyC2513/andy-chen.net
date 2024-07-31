@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, cloneElement } from "react";
 import gsap from "gsap";
 
 const MagneticButton = ({ children }) => {
@@ -39,7 +39,7 @@ const MagneticButton = ({ children }) => {
     };
   }, []);
 
-  return React.cloneElement(children, { ref });
+  return cloneElement(children, { ref });
 };
 
 export default MagneticButton;

@@ -22,12 +22,8 @@ body:has(.card[data-color="green"]:hover) {
 }
 
 @layer utilities {
-  .max-container {
+  .contact-container {
     @apply max-w-5xl mx-auto sm:p-16 pb-12 !pt-[126px] px-8 min-h-[calc(100vh-80px)];
-  }
-
-  .head-text {
-    @apply sm:text-5xl text-3xl font-semibold sm:leading-snug font-poppins;
   }
 
   .subhead-text {
@@ -35,15 +31,15 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .input {
-    @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+    @apply bg-white border-2 border-black text-black text-sm rounded-lg focus:outline-none block w-full p-2.5 mt-2.5 font-normal focus:shadow-[2px_2px_0px_rgba(0,0,0,1)];
   }
 
   .textarea {
-    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 w-full border-black text-sm text-black bg-white focus:outline-none rounded-lg border-2 focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] mt-2.5 font-normal;
   }
 
   .btn {
-    @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+    @apply font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF] rounded-full;
   }
 
   .header {

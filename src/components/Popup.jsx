@@ -14,30 +14,30 @@ const TextCard = ({ text, link, buttonText }) => {
 const stageContent = {
   1: (
     <TextCard
-      text="Skills Lorem ipsum odor amet, consectetuer adipiscing elit. Lorem ipsum odor amet, consectetuer adipiscing elit."
+      text="Throughout my journey, I have picked up many skills from personal interests as well as academic studies."
       link="/about"
-      buttonText="Lorem ipsum"
+      buttonText="Learn More"
     />
   ),
   2: (
     <TextCard
-      text="Projects Lorem ipsum odor amet, consectetuer adipiscing elit. Lorem ipsum odor amet, consectetuer adipiscing elit."
+      text="I have built multiple successful projects over the years, feel free to check them out!"
       link="/projects"
-      buttonText="Lorem ipsum"
+      buttonText="View Projects"
     />
   ),
   3: (
     <TextCard
-      text="Resume Lorem ipsum odor amet, consectetuer adipiscing elit. Lorem ipsum odor amet, consectetuer adipiscing elit."
+      text="Looking for my resume?"
       link="/resume"
-      buttonText="Lorem ipsum"
+      buttonText="Download"
     />
   ),
   4: (
     <TextCard
-      text="Contact Lorem ipsum odor amet, consectetuer adipiscing elit. Lorem ipsum odor amet, consectetuer adipiscing elit."
+      text="Want to get in touch? Feel free to contact me through email or social media."
       link="/contact"
-      buttonText="Lorem ipsum"
+      buttonText="Contact Me"
     />
   ),
 };

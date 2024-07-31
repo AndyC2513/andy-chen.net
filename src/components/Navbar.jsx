@@ -3,14 +3,18 @@ import { NavLink } from "react-router-dom";
 import gsap from "gsap";
 import MagneticButton from "./MagneticButton";
 
-const Navbar = () => {
+const Navbar = ({ setExplored }) => {
   const headerRef = useRef(null);
+
+  const handleClick = () => {
+    setExplored(true);
+  };
 
   useEffect(() => {
     gsap.fromTo(
       headerRef.current,
       { y: -50, opacity: 0 },
-      { duration: 2.5, y: 0, opacity: 1, ease: "power3.out" }
+      { duration: 3, y: 0, opacity: 1, ease: "power3.out" }
     );
   }, []);
 
@@ -24,17 +28,35 @@ const Navbar = () => {
 
       <nav className="mt-1 flex gap-5 font-bold">
         <MagneticButton>
-          <NavLink to="/about">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-black"
+            }
+            onClick={handleClick}
+          >
             <p>About</p>
           </NavLink>
         </MagneticButton>
         <MagneticButton>
-          <NavLink to="/projects">
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-black"
+            }
+            onClick={handleClick}
+          >
             <p>Projects</p>
           </NavLink>
         </MagneticButton>
         <MagneticButton>
-          <NavLink to="/contact">
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-black"
+            }
+            onClick={handleClick}
+          >
             <p>Contact</p>
           </NavLink>
         </MagneticButton>

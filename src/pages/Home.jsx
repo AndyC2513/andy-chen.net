@@ -8,7 +8,7 @@ import TextDisplay from "../components/TextDisplay";
 import Popup from "../components/Popup";
 import Navbar from "../components/Navbar";
 
-const Home = () => {
+const Home = ({ explored }) => {
   // State for the rotation of the island
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
@@ -103,14 +103,20 @@ const Home = () => {
     adjustCameraRotation();
 
   useEffect(() => {
-    setCameraPosition(firstPosition);
-    setCameraRotation(firstRotation);
+    if (!explored) {
+      setCameraPosition(firstPosition);
+      setCameraRotation(firstRotation);
+    } else {
+      setCameraPosition(fourthPosition);
+      setCameraRotation(fourthRotation);
+      setButtonIndex(4);
+      setFirstLoad(false);
+      setUserViewing(false);
+    }
   }, []);
 
   return (
     <section className="w-full h-screen relative">
-      { !userViewing && <Navbar /> }
-
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
         {currentStage && (
           <Popup currentStage={currentStage} userViewing={userViewing} />
