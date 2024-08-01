@@ -34,7 +34,11 @@ const Main = ({
   }, [cameraPosition, cameraRotation]);
 
   return (
-    <a.perspectiveCamera ref={cameraRef} position={position} rotation={rotation}>
+    <a.perspectiveCamera
+      ref={cameraRef}
+      position={position}
+      rotation={rotation}
+    >
       {/* Lights */}
       <directionalLight position={[9, 1, 1]} intensity={1.8} />
       <ambientLight intensity={0.3} />

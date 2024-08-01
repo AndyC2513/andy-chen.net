@@ -1,4 +1,3 @@
-
 const TextDisplay = ({ buttonIndex, isMoving, firstLoad }) => {
   return (
     <>

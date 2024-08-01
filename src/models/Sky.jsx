@@ -21,16 +21,16 @@ const Sky = ({ isRotating, ...props }) => {
       <group scale={0.01}>
         <mesh
           geometry={nodes.Sphere__0.geometry}
-          material={materials['Scene_-_Root']}
+          material={materials["Scene_-_Root"]}
           scale={50000}
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, -8, 0]}
         />
       </group>
     </a.group>
-  )
+  );
 };
 
-useGLTF.preload('/sky.glb')
+useGLTF.preload("/sky.glb");
 
 export default Sky;
