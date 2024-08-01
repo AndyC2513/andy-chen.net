@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import useAlert from "../hooks/useAlert";
-import { github, instagram, linkedin } from "../assets/icons";
+import { github, html, instagram, linkedin } from "../assets/icons";
 import MagneticButton from "../components/MagneticButton";
 
 const Contact = ({ setExplored }) => {
@@ -75,11 +75,11 @@ const Contact = ({ setExplored }) => {
   }, []);
 
   return (
-    <section className="relative flex lg:flex-row flex-col contact-container h-[100vh]">
+    <section className="relative flex lg:flex-row flex-col main-container h-[100vh]">
       {alert.show && <Alert {...alert} />}
 
       <div className="flex-1 min-w-[50%] flex flex-col">
-        <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug font-poppins">
+        <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug font-poppins text-center">
           Contact Me
         </h1>
 
@@ -145,7 +145,7 @@ const Contact = ({ setExplored }) => {
         <h1 className="sm:text-3xl text-3xl font-semibold sm:leading-snug font-poppins mt-10">
           My Social Medias
         </h1>
-        <div className="flex gap-10 mt-10 pb-10">
+        <div className="flex gap-10 mt-10 pb-7">
           <a
             href="https://github.com/AndyC2513"
             target="_blank"
