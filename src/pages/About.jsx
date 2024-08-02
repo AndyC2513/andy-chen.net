@@ -1,24 +1,15 @@
 import React, { useEffect } from "react";
 import { skills } from "../constant";
 import Footer from "../components/Footer";
-import Lenis from 'lenis'
 
 const About = ({ setExplored }) => {
   useEffect(() => {
     setExplored(true);
-    const lenis = new Lenis()
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
   }, []);
 
   return (
-    <div className="h-screen">
-      <section className="main-container h-[100vh]">
+    <div>
+      <section className="main-container lg:h-screen">
         <h1 className="text-5xl font-bold text-start text-black">About Me</h1>
         <p className="lg:text-xl text-sm text-start text-black mt-5">
           Here are some of my familiar tech-stacks that I have worked with in
@@ -37,6 +28,15 @@ const About = ({ setExplored }) => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="w-full flex items-center md:flex-row flex-col sm:mt-16 mt-8 gap-7;">
+          <h1 className="text-3xl font-bold text-center text-black mb-10">
+            Looking for my Resume?
+          </h1>
+          <a href="/Resume.pdf" download className="btn lg:ml-11 mb-10">
+            Download
+          </a>
         </div>
       </section>
       <Footer />

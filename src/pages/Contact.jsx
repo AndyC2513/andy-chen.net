@@ -4,6 +4,7 @@ import Alert from "../components/Alert";
 import useAlert from "../hooks/useAlert";
 import { github, html, instagram, linkedin } from "../assets/icons";
 import MagneticButton from "../components/MagneticButton";
+import Footer from "../components/Footer";
 
 const Contact = ({ setExplored }) => {
   const [form, setForm] = useState({
@@ -75,107 +76,110 @@ const Contact = ({ setExplored }) => {
   }, []);
 
   return (
-    <section className="relative flex lg:flex-row flex-col main-container h-[100vh]">
-      {alert.show && <Alert {...alert} />}
+    <div>
+      <section className="relative flex lg:flex-row flex-col main-container h-[100vh]">
+        {alert.show && <Alert {...alert} />}
 
-      <div className="flex-1 min-w-[50%] flex flex-col">
-        <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug font-poppins text-center">
-          Contact Me
-        </h1>
+        <div className="flex-1 min-w-[50%] flex flex-col">
+          <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug font-poppins text-center">
+            Contact Me
+          </h1>
 
-        <form
-          className="w-full flex flex-col mt-14 gap-7"
-          onSubmit={handleSubmit}
-        >
-          <label className="text-black font-semibold">
-            Name
-            <input
-              className="input"
-              placeholder="John"
-              type="text"
-              name="name"
-              required
-              value={form.name}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-          </label>
-          <label className="text-black font-semibold">
-            Email
-            <input
-              className="input"
-              placeholder="johndoe@gmail.com"
-              type="email"
-              name="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-          </label>
-          <label className="text-black font-semibold">
-            Message
-            <textarea
-              className="textarea"
-              placeholder="Your message goes here..."
-              name="message"
-              required
-              value={form.message}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            />
-            <button
-              className="btn mt-7"
-              type="submit"
-              onFocus={handleFocus}
-              handleBlur={handleBlur}
-              disabled={isLoading}
-              onSubmit={handleSubmit}
-            >
-              {isLoading ? "Sending..." : "Send Message"}
-            </button>
-          </label>
-        </form>
-      </div>
-
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px] flex flex-col items-center">
-        <h1 className="sm:text-3xl text-3xl font-semibold sm:leading-snug font-poppins mt-10">
-          My Social Medias
-        </h1>
-        <div className="flex gap-10 mt-10 pb-7">
-          <a
-            href="https://github.com/AndyC2513"
-            target="_blank"
-            rel="noopener noreferrer"
+          <form
+            className="w-full flex flex-col mt-14 gap-7"
+            onSubmit={handleSubmit}
           >
-            <MagneticButton>
-              <img src={github} />
-            </MagneticButton>
-          </a>
-          <a
-            href="https://instagram.com/andyc2513"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MagneticButton>
-              <img src={instagram} />
-            </MagneticButton>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/andy-chen-9a90232b2/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MagneticButton>
-              <img src={linkedin} />
-            </MagneticButton>
-          </a>
+            <label className="text-black font-semibold">
+              Name
+              <input
+                className="input"
+                placeholder="John"
+                type="text"
+                name="name"
+                required
+                value={form.name}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+            </label>
+            <label className="text-black font-semibold">
+              Email
+              <input
+                className="input"
+                placeholder="johndoe@gmail.com"
+                type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+            </label>
+            <label className="text-black font-semibold">
+              Message
+              <textarea
+                className="textarea"
+                placeholder="Your message goes here..."
+                name="message"
+                required
+                value={form.message}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+              <button
+                className="btn mt-7"
+                type="submit"
+                onFocus={handleFocus}
+                handleBlur={handleBlur}
+                disabled={isLoading}
+                onSubmit={handleSubmit}
+              >
+                {isLoading ? "Sending..." : "Send Message"}
+              </button>
+            </label>
+          </form>
         </div>
-      </div>
-    </section>
+
+        <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px] flex flex-col items-center">
+          <h1 className="sm:text-3xl text-3xl font-semibold sm:leading-snug font-poppins mt-10">
+            My Social Medias
+          </h1>
+          <div className="flex gap-10 mt-10 pb-7">
+            <a
+              href="https://github.com/AndyC2513"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MagneticButton>
+                <img src={github} />
+              </MagneticButton>
+            </a>
+            <a
+              href="https://instagram.com/andyc2513"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MagneticButton>
+                <img src={instagram} />
+              </MagneticButton>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/andy-chen-9a90232b2/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MagneticButton>
+                <img src={linkedin} />
+              </MagneticButton>
+            </a>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 };
 

@@ -19,6 +19,13 @@ import jest from "./jest.svg";
 import java from "./java.svg";
 import docker from "./docker.svg";
 import racket from "./racket.svg";
+import ai from "./ai.svg";
+import website from "./website.svg";
+import gpu from "./gpu.svg";
+import riot from "./riot.svg";
+import discord from "./discord.svg";
+import budget from "./budget.svg";
+import tennis from "./tennis.svg";
 
 export {
   github,
@@ -42,4 +49,11 @@ export {
   java,
   docker,
   racket,
+  ai,
+  website,
+  gpu,
+  riot,
+  discord,
+  budget,
+  tennis,
 };

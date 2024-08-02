@@ -6,7 +6,6 @@ import Main from "../components/Main";
 import ButtonArray from "../components/ButtonArray";
 import TextDisplay from "../components/TextDisplay";
 import Popup from "../components/Popup";
-import Navbar from "../components/Navbar";
 
 const Home = ({ explored }) => {
   // State for the rotation of the island

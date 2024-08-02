@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 
-const TextCard = ({ text, link, buttonText }) => {
+const TextCard = ({ text, link, buttonText, isDownload }) => {
   return (
     <div className="pop-box flex flex-col justify-center">
       <p className="font-medium sm:text-xl text-center">{text}</p>
-      <Link to={link} className="neo-brutalism-btn-card pop-btn">
-        {buttonText}
-      </Link>
+      {isDownload ? (
+        <a href={link} download className="neo-brutalism-btn-card pop-btn">
+          {buttonText}
+        </a>
+      ) : (
+        <Link to={link} className="neo-brutalism-btn-card pop-btn">
+          {buttonText}
+        </Link>
+      )}
     </div>
   );
 };
@@ -29,8 +35,9 @@ const stageContent = {
   3: (
     <TextCard
       text="Looking for my resume?"
-      link="/resume"
+      link="/Resume.pdf"
       buttonText="Download"
+      isDownload={true}
     />
   ),
   4: (
