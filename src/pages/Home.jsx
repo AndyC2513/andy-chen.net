@@ -7,6 +7,7 @@ import ButtonArray from "../components/ButtonArray";
 import TextDisplay from "../components/TextDisplay";
 import Popup from "../components/Popup";
 
+// Home page
 const Home = ({ explored }) => {
   // State for the rotation of the island
   const [isRotating, setIsRotating] = useState(false);

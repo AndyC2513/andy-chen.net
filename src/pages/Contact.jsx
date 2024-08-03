@@ -2,10 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import useAlert from "../hooks/useAlert";
-import { github, html, instagram, linkedin } from "../assets/icons";
+import { github, instagram, linkedin } from "../assets/icons";
 import MagneticButton from "../components/MagneticButton";
 import Footer from "../components/Footer";
 
+// Contact page
 const Contact = ({ setExplored }) => {
   const [form, setForm] = useState({
     name: "",
@@ -77,7 +78,7 @@ const Contact = ({ setExplored }) => {
 
   return (
     <div>
-      <section className="relative flex lg:flex-row flex-col main-container h-[100vh]">
+      <section className="relative flex lg:flex-row flex-col main-container min-h-[100vh] h-max lg:h-screen">
         {alert.show && <Alert {...alert} />}
 
         <div className="flex-1 min-w-[50%] flex flex-col">
@@ -143,18 +144,18 @@ const Contact = ({ setExplored }) => {
           </form>
         </div>
 
-        <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px] flex flex-col items-center">
+        <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-auto flex flex-col items-center mt-10 lg:mt-0">
           <h1 className="sm:text-3xl text-3xl font-semibold sm:leading-snug font-poppins mt-10">
             My Social Medias
           </h1>
-          <div className="flex gap-10 mt-10 pb-7">
+          <div className="flex gap-10 mt-10 pb-14">
             <a
               href="https://github.com/AndyC2513"
               target="_blank"
               rel="noopener noreferrer"
             >
               <MagneticButton>
-                <img src={github} />
+                <img src={github} alt="GitHub" />
               </MagneticButton>
             </a>
             <a
@@ -163,7 +164,7 @@ const Contact = ({ setExplored }) => {
               rel="noopener noreferrer"
             >
               <MagneticButton>
-                <img src={instagram} />
+                <img src={instagram} alt="Instagram" />
               </MagneticButton>
             </a>
             <a
@@ -172,7 +173,7 @@ const Contact = ({ setExplored }) => {
               rel="noopener noreferrer"
             >
               <MagneticButton>
-                <img src={linkedin} />
+                <img src={linkedin} alt="LinkedIn" />
               </MagneticButton>
             </a>
           </div>

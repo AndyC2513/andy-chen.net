@@ -8,6 +8,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { projects } from "../constant";
 import MagneticButton from "../components/MagneticButton";
 
+// Projects page
 const Projects = ({ setExplored }) => {
   useEffect(() => {
     setExplored(true);

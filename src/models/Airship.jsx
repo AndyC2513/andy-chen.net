@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 import airshipScene from "../assets/3d/airship.glb";
-import { useFrame } from "@react-three/fiber";
 
+// The Airship component is a simple component that displays the airship model.
 const Airship = ({ isRotating, planeScale, userViewing, ...props }) => {
   const ref = useRef();
   const { scene, animations } = useGLTF(airshipScene);

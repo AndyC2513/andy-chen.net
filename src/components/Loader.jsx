@@ -1,5 +1,6 @@
 import { Html } from "@react-three/drei";
 
+// The Loader component is a simple component that displays a loading spinner.
 const Loader = () => {
   return (
     <Html>

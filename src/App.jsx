@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Lenis from "lenis";
 
+// Main App
 function App() {
   const [explored, setExplored] = useState(false);
 

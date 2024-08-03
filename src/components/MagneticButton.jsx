@@ -1,6 +1,7 @@
 import { useEffect, useRef, cloneElement } from "react";
 import gsap from "gsap";
 
+// The MagneticButton component is a simple component that makes a button follow the mouse cursor.
 const MagneticButton = ({ children }) => {
   const ref = useRef(null);
 

@@ -4,6 +4,7 @@ import Volcano from "../models/Volcano";
 import Airship from "../models/Airship";
 import { a, useSpring } from "@react-spring/three";
 
+// The Main component is the main component of the application. It contains the 3D models and the camera.
 const Main = ({
   isRotating,
   islandPosition,

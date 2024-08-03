@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// The useAlert hook is a custom hook that manages the alert state to alert user whether message goes through.
 const useAlert = () => {
   const [alert, setAlert] = useState({ show: false, text: "", type: "danger" });
 

@@ -4,6 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { a } from "@react-spring/three";
 
+// The Sky component is a simple component that displays the sky model.
 const Sky = ({ isRotating, ...props }) => {
   const { nodes, materials } = useGLTF(skyScene);
   const skyRef = useRef();

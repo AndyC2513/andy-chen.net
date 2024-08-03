@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const ButtonArray = ({
   setCameraPosition,
   setCameraRotation,
@@ -16,12 +14,14 @@ const ButtonArray = ({
   buttonIndex,
   setFirstLoad,
 }) => {
+  // Function to handle button click
   const handleClick = (stage, position, rotation) => {
     setCameraPosition(position);
     setCameraRotation(rotation);
     setButtonIndex(stage);
     setFirstLoad(false);
 
+    // Check if user is viewing the model
     if (stage !== 4 && (stage !== undefined || stage !== null)) {
       setUserViewing(true);
     } else {

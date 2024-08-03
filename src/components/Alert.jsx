@@ -1,6 +1,5 @@
-import React from "react";
-
 const Alert = ({ type, text }) => {
+  // returns an alert component with a message and a type based on whether message was sent successfully or not
   return (
     <div className="absolute top-10 left-0 right-0 flex justify-center items-center">
       <div

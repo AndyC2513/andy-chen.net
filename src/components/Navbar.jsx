@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import gsap from "gsap";
 import MagneticButton from "./MagneticButton";
 
+// The Navbar component is a simple component that displays the navigation bar.
 const Navbar = ({ setExplored }) => {
   const headerRef = useRef(null);
 

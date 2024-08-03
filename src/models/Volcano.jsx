@@ -9,10 +9,11 @@ Title: Volcano Island Lowpoly
 import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { a, useSpring } from "@react-spring/three";
+import { a } from "@react-spring/three";
 
 import volcanoScene from "../assets/3d/volcano.glb";
 
+// The Volcano component is a simple component that displays the volcano model.
 const Volcano = ({
   position,
   scale,

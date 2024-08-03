@@ -49,6 +49,7 @@ const stageContent = {
   ),
 };
 
+// The Popup component is a simple component that displays a popup based on the current stage.
 const Popup = ({ currentStage, userViewing }) => {
   if (!userViewing) {
     return stageContent[currentStage] || null;

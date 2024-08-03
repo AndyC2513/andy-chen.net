@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { skills } from "../constant";
 import Footer from "../components/Footer";
 
+// The About Page
 const About = ({ setExplored }) => {
   useEffect(() => {
     setExplored(true);
@@ -34,7 +35,7 @@ const About = ({ setExplored }) => {
           <h1 className="text-3xl font-bold text-center text-black mb-10">
             Looking for my Resume?
           </h1>
-          <a href="/Resume.pdf" download className="btn lg:ml-11 mb-10">
+          <a href="/Resume.pdf" download className="btn md:ml-11 mb-10">
             Download
           </a>
         </div>

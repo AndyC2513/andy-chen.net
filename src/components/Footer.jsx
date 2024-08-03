@@ -1,12 +1,11 @@
-import React from "react";
-
 export default function Footer() {
   return (
+    // Footer Component
     <div
-      className="relative h-[400px]"
+      className="relative h-[400px] z-0"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="relative h-[calc(100vh+400px)] -top-[100vh]">
+      <div className="relative h-[calc(100vh+400px)] -top-[100vh] z-0">
         <div className="h-[400px] sticky top-[calc(100vh-400px)]">
           <div className="bg-[#dbdbdb] py-8 px-12 h-full w-full flex flex-col justify-between">
             <div className="flex justify-center">

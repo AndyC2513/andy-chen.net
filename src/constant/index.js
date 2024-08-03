@@ -1,3 +1,5 @@
+// exorts constants so easier to map over
+
 import {
   cpp,
   css,
@@ -140,7 +142,7 @@ export const projects = [
     link: "https://github.com/jeffreyzhai123/psychic-octo-doodle",
   },
   {
-    title: "andy-chen.io",
+    title: "andy-chen.net",
     techstacks: "Personal Portfolio Website (This Website)",
     icon: website,
     iconBg: "#c45eff",
