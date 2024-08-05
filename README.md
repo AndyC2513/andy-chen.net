@@ -9,3 +9,13 @@ Currently, two official plugins are available:
 
 # Live Link
 [Live Website](https://andy-chen.net)
+
+# Run on VSCode
+
+To run on VSCode, open the terminal and type the following:
+
+```sh
+npm I
+npm run dev
+
+
