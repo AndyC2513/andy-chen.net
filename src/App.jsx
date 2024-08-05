@@ -1,6 +1,6 @@
 import "./index.css";
 import { useState, useEffect } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
@@ -31,14 +31,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home explored={explored} />} />
           <Route path="/about" element={<About setExplored={setExplored} />} />
-          <Route
-            path="/contact"
-            element={<Contact setExplored={setExplored} />}
-          />
-          <Route
-            path="/projects"
-            element={<Projects setExplored={setExplored} />}
-          />
+          <Route path="/contact" element={<Contact setExplored={setExplored} />} />
+          <Route path="/projects" element={<Projects setExplored={setExplored} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </main>
