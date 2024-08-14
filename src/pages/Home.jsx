@@ -18,6 +18,7 @@ const Home = ({ explored }) => {
   const [isMoving, setMoving] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
   const [buttonIndex, setButtonIndex] = useState(1);
+  const [objectLoaded, setObjectLoaded] = useState(false);
 
   const adjustCameraPosition = () => {
     let firstPosition;
@@ -142,11 +143,13 @@ const Home = ({ explored }) => {
       />
 
       <div className="absolute top-40 left-0 right-0 z-10 flex items-center justify-center">
-        <TextDisplay
-          buttonIndex={buttonIndex}
-          isMoving={isMoving}
-          firstLoad={firstLoad}
-        />
+        { objectLoaded &&
+          <TextDisplay
+            buttonIndex={buttonIndex}
+            isMoving={isMoving}
+            firstLoad={firstLoad}
+          />
+        }
       </div>
 
       {/* 3D Canvas */}
@@ -170,6 +173,7 @@ const Home = ({ explored }) => {
             cameraRotation={cameraRotation}
             setMoving={setMoving}
             userViewing={userViewing}
+            setObjectLoaded={setObjectLoaded}
           />
         </Suspense>
       </Canvas>

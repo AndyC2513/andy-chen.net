@@ -18,6 +18,7 @@ const Main = ({
   cameraRotation,
   userViewing,
   setMoving,
+  setObjectLoaded,
 }) => {
   // Camera
   const cameraRef = useRef();
@@ -33,6 +34,10 @@ const Main = ({
   useEffect(() => {
     setMoving(true);
   }, [cameraPosition, cameraRotation]);
+
+  useEffect(() => {
+    setObjectLoaded(true);
+  }, []);
 
   return (
     <a.perspectiveCamera

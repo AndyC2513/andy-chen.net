@@ -10,10 +10,13 @@ const Airship = ({ isRotating, planeScale, userViewing, ...props }) => {
   const { actions } = useAnimations(animations, ref);
 
   useEffect(() => {
+    const action = actions["armature_airship|Scene"];
+    action.timeScale = 2;
     if ((isRotating && !userViewing) || (!isRotating && userViewing)) {
-      actions["armature_airship|Scene"].play();
+      action.paused = false;
+      action.play();
     } else {
-      actions["armature_airship|Scene"].stop();
+      action.paused = true;
     }
   }, [actions, isRotating, userViewing]);
 
