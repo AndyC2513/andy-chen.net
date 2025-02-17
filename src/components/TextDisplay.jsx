@@ -9,8 +9,8 @@ const TextDisplay = ({ buttonIndex, isMoving, firstLoad }) => {
             Hey, I am Andy
           </span>
           <span className="text-black bg-transparent p-2 rounded font-medium">
-            I am currently a third-year full time student at the University of
-            British Columbia is pursuing a bachelor's degree in Computer
+            I am a third-year full time student at the University of
+            British Columbia currently pursuing a bachelor's degree in Computer
             Science. Thank you for checking out my website!
           </span>
         </div>
@@ -23,8 +23,7 @@ const TextDisplay = ({ buttonIndex, isMoving, firstLoad }) => {
           </span>
           <span className="text-black bg-transparent p-2 rounded font-medium">
             I am passionate about web development, cybersecurity, and data
-            science. My passions outside of software include badminton, cooking
-            and (no surprise) video games.
+            science. I have experience with both front-end and back-end development, and am knowledgeable in JS, CSS, HTML, C++ and Python.
           </span>
         </div>
       )}

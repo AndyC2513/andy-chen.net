@@ -216,7 +216,7 @@ export const projects = [
     iconBg: "#ff4a4a",
     date: "April 2023 - May 2023",
     points: [
-      "Developed using Java, jUnit, Java Swing.",
+      "Developed using infer, tidyverse, dbplyr.",
       "Working with four colleagues, wrangled and analyzed a dataset using R.",
       "Closely documented the entire process in Jupyter Notebook.",
       "Provided detailed rationale as well as effective matrices and tables that accurately represent our findings.",
